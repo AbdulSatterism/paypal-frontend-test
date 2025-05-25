@@ -46,7 +46,7 @@ const PayPalJoinParty: React.FC<Props> = ({ partyId, ticketCount, amount }) => {
   return (
     <div>
       {!paid && !showButtons && (
-        <button onClick={() => setShowButtons(true)}>Join Now</button>
+        <button className='h-12 w-28 border-radious bg-white rounded-sm text-[18px] font-bold' onClick={() => setShowButtons(true)}>Join Now</button>
       )}
 
       {showButtons && !paid && (

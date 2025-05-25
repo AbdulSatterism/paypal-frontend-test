@@ -14,9 +14,11 @@ function App() {
   const amount = 100; // example amount in USD
 
   return (
-    <div style={{ padding: 20 }}>
-      <h1>Join Party Payment</h1>
+    <div className='h-[100vh] flex items-center justify-center text-center bg-gray-400'>
+      <div>
+        <h1 className='text-blue-500 '>Join Party Payment</h1>
       <PayPalJoinParty partyId={partyId} ticketCount={ticketCount} amount={amount} />
+      </div>
     </div>
   );
 
