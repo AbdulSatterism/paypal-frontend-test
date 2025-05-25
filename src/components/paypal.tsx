@@ -17,11 +17,11 @@ const PayPalJoinParty: React.FC<Props> = ({ partyId, ticketCount, amount }) => {
 
   const handleApprove = async (data: any) => {
     try {
-      const response = await fetch(`${process.env.base_url}`, {
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json', 
-          'authorization': `Bearer ${process.env.token}`  // Use your actual token here
+          'authorization': `Bearer ${import.meta.env.VITE_TOKEN}`  // Use your actual token here
         },
         body: JSON.stringify({
           orderId: data.orderID,  // PayPal Order ID
@@ -52,7 +52,7 @@ const PayPalJoinParty: React.FC<Props> = ({ partyId, ticketCount, amount }) => {
       {showButtons && !paid && (
         <PayPalScriptProvider
           options={{
-            clientId: `${process.env.client_id}`,  
+            clientId: `${import.meta.env.VITE_CLIENT_ID}`,  
             currency: 'USD',
           }}
         >
