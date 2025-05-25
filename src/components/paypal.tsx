@@ -6,7 +6,7 @@ import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 interface Props {
   partyId: string;
   ticketCount: number;
-  amount: number; // total amount to pay
+  amount: number;
 }
 
 const PayPalJoinParty: React.FC<Props> = ({ partyId, ticketCount, amount }) => {
