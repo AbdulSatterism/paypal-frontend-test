@@ -16,6 +16,9 @@ const PayPalJoinParty: React.FC<Props> = ({ partyId, ticketCount, amount }) => {
   const [showButtons, setShowButtons] = useState(false);
 
   const handleApprove = async (data: any) => {
+
+     console.log("data", data);
+
     try {
       const response = await fetch(`${import.meta.env.VITE_BASE_URL}`, {
         method: 'POST',
@@ -23,6 +26,7 @@ const PayPalJoinParty: React.FC<Props> = ({ partyId, ticketCount, amount }) => {
           'Content-Type': 'application/json', 
           'authorization': `Bearer ${import.meta.env.VITE_TOKEN}`  // Use your actual token here
         },
+
         body: JSON.stringify({
           orderId: data.orderID,  // PayPal Order ID
           partyId,
@@ -30,6 +34,11 @@ const PayPalJoinParty: React.FC<Props> = ({ partyId, ticketCount, amount }) => {
           amount,
         }),
       });
+
+
+     
+
+
       const result = await response.json();
 
       if (result.success) {
@@ -59,6 +68,8 @@ const PayPalJoinParty: React.FC<Props> = ({ partyId, ticketCount, amount }) => {
           <PayPalButtons
             style={{ layout: 'vertical' }}
             createOrder={(data, actions) => {
+
+              console.log("data from createOrder", data);
               return actions.order.create({
                 purchase_units: [
                   {
@@ -72,6 +83,9 @@ const PayPalJoinParty: React.FC<Props> = ({ partyId, ticketCount, amount }) => {
               });
             }}
             onApprove={async (data, actions) => {
+              
+
+              console.log("data from onApprove", data);
               if (actions.order) {
                 const details = await actions.order.capture();
                 setOrderId(details.id || null);

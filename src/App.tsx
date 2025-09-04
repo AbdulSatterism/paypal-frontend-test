@@ -9,7 +9,7 @@ import PayPalJoinParty from './components/paypal';
 
 
 function App() {
-  const partyId = '682f3d446f106d9c2fa8fbe1';
+  const partyId = '68b961491c695b05582c676f';
   const ticketCount = 5;
   const amount = 100; // example amount in USD
 
